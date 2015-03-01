@@ -1,0 +1,50 @@
+# encoding: utf-8
+
+describe <%= project.type %>::<%= validator.type %>, type: :validator do
+
+  # For the validator spec those definitions are made by default:
+  #
+  # Matchers:
+  # * pass_with(value)
+  # * fail_with(value)
+  #
+  # See all the definitions at `spec/support/validators/`.
+
+  # The validator is tested by assigning values to the :name attribute.
+  subject { described_class.new options.merge(attributes: %w(name)) }
+
+  context "without options" do
+
+    # let!(:options) { {} }
+
+    # it "passes with [TODO: valid value]" do
+    #   expect(subject).to pass_with [TODO: valid value]
+    # end
+<% keys.each do |key| -%>
+
+    # it "fails with [TODO: wrong value]" do
+    #   expect(subject).to fail_with [TODO: wrong value], key: :<%= key %>
+    # end
+<% end -%>
+  end
+<% params.each do |option| -%>
+
+  context "<%= option -%>: [TODO: option value]" do
+
+    # let!(:options) { { <%= option -%>: [TODO: option value] } }
+
+    # it "passes with [TODO: valid value]" do
+    #   expect(subject).to pass_with [TODO: valid value]
+    # end
+<%   keys.each do |key| -%>
+
+    # it "fails with [TODO: wrong value]" do
+    #   expect(subject).to fail_with [TODO: wrong value], key: :<%= key %>
+    # end
+<%   end -%>
+  end
+<% end -%>
+
+  # Describe a behaviour of the validator for specific combinations of options,
+  # if the behaviour depends on their interaction.
+end

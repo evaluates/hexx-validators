@@ -1,0 +1,73 @@
+# encoding: utf-8
+
+<% project.namespaces.each do |item| -%>
+module <%= item %>
+
+<% end -%>
+module <%= project.const %>
+
+  # Custom ActiveModule validators
+<% validator.namespaces.each do |item| -%>
+  module <%= item %>
+
+<% end -%>
+    # Checks [TODO: something]
+    #
+    # @example
+    #   class Foo
+    #     include ActiveModule::Validations
+    #
+    #     validates_with(
+    #       <%= project.type %>::<%= validator.type %>,
+    #       attributes: [:foo],
+<% params.each do |item| -%>
+    #       <%= item %>: [TODO: option value],
+<% end -%>
+    #     )
+    #   end
+    #
+    #   # Validation passes when [TODO: some condition satisfied]
+    #   foo = Foo.new foo: [TODO: value]
+    #   foo.valid? # => true
+    #
+    #   # Validation fails when [TODO: some condition satisfied]
+    #   foo = Foo.new foo: [TODO: value]
+    #   foo.valid? # => false
+    #
+<% params.each do |item| -%>
+    # @option [TODO] :<%= item %>
+    #   [TODO: describe the option]
+<% end -%>
+    #
+    # @api private
+    class <%= validator.const %> < ActiveModel::EachValidator
+
+      # # @private
+      # def validate_each(record, attribute, value)
+      #   @value = value
+<% keys.each do |key| -%>
+      #   errors.add attribute, :<%= key %> if <%= key %>?
+<% end -%>
+      # end
+
+      # private
+
+      # attr_reader :value
+<% keys.each do |key| -%>
+
+      # def <%= key %>?
+      #   ...
+      # end
+<% end -%>
+
+    end # class <%= validator.const %>
+<% validator.namespaces.reverse.each do |item| -%>
+
+  end # module <%= item %>
+<% end -%>
+
+end # module <%= project.const %>
+<% project.namespaces.reverse.each do |item| -%>
+
+end # module <%= item %>
+<% end -%>
