@@ -1,10 +1,12 @@
 # encoding: utf-8
 
-# Shared namespace for the Hexx-based gems.
 module Hexx
 
   # Namespace for content of the 'hexx-validators'.
   module Validators
+
+    require_relative "validators/version"
+    require_relative "validators/generator"
 
   end # module Validators
 

@@ -1,6 +1,9 @@
 # encoding: utf-8
-require "hexx"
+require "hexx-cli"
 
-require_relative "hexx/validators"
-require_relative "hexx/validators/version"
-require_relative "hexx/validators/generator"
+# Shared namespace for the Hexx-based gems.
+module Hexx
+
+  require_relative "hexx/validators"
+
+end # module Hexx

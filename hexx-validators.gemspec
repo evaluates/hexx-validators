@@ -1,24 +1,25 @@
 $:.push File.expand_path("../lib", __FILE__)
 require "hexx/validators/version"
 
-Gem::Specification.new do |s|
-  s.name        = "hexx-validators"
-  s.version     = Hexx::Validators::VERSION.dup
-  s.author      = "Andrew Kozin"
-  s.email       = "andrew.kozin@gmail.com"
-  s.homepage    = "https://github.com/nepalez/hexx"
-  s.summary     = "Scaffolder for custom validators."
-  s.description = "Thor-based generator of an ActiveModel validators" \
+Gem::Specification.new do |gem|
+
+  gem.name        = "hexx-validators"
+  gem.version     = Hexx::Validators::VERSION.dup
+  gem.author      = "Andrew Kozin"
+  gem.email       = "andrew.kozin@gmail.com"
+  gem.homepage    = "https://github.com/nepalez/hexx"
+  gem.summary     = "Scaffolder for custom validators."
+  gem.description = "Thor-based generator of an ActiveModel validators" \
                   "and its unit test templates."
-  s.license     = "MIT"
+  gem.license     = "MIT"
 
-  s.require_paths    = ["lib"]
-  s.files            = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
-  s.test_files       = Dir["spec/**/*.rb"]
-  s.extra_rdoc_files = Dir["README.md", "LICENSE", "config/metrics/STYLEGUIDE"]
+  gem.require_paths    = ["lib"]
+  gem.files            = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
+  gem.test_files       = Dir["spec/**/*.rb"]
+  gem.extra_rdoc_files = Dir["README.md", "LICENSE"]
 
-  s.platform    = Gem::Platform::RUBY
-  s.required_ruby_version = "~> 2.1"
+  gem.required_ruby_version = "~> 2.0"
+  gem.add_runtime_dependency "hexx-cli", "~> 0.0"
+  gem.add_development_dependency "hexx-rspec", "~> 0.2", ">= 0.2.2"
 
-  s.add_runtime_dependency "hexx", "~> 8.0"
 end

@@ -9,7 +9,7 @@ module Hexx
     # * scope class definition in `app/validators`;
     # * scope specification in `spec/tests/validators`.
     #
-    class Generator < Hexx::Generator
+    class Generator < Hexx::CLI::Base
 
       # @!scope class
       # @!method start(arguments)
@@ -68,11 +68,11 @@ module Hexx
       private
 
       def project
-        @project ||= Hexx::Name.new ::File.basename(destination_root)
+        @project ||= Hexx::CLI::Name.new ::File.basename(destination_root)
       end
 
       def validator
-        @validator ||= Hexx::Name.new "validators/#{ name }"
+        @validator ||= Hexx::CLI::Name.new "validators/#{ name }"
       end
 
       def keys
