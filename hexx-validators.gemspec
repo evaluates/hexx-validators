@@ -20,6 +20,6 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = "~> 2.0"
   gem.add_runtime_dependency "hexx-cli", "~> 0.0"
-  gem.add_development_dependency "hexx-rspec", "~> 0.2", ">= 0.2.2"
+  gem.add_development_dependency "hexx-rspec", "~> 0.3"
 
 end
